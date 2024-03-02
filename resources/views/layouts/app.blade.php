@@ -20,15 +20,16 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__wobble" src="{{ asset('theme/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
+        <img class="animation__wobble" src="{{ asset('theme/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60"
+             width="60">
     </div>
 
-    @include('admin.layouts.header')
-    @include('admin.layouts.sidebar')
+    @include('layouts.header')
+    @include('layouts.sidebar')
 
     @yield('content')
 
-    @include('admin.layouts.footer')
+    @include('layouts.footer')
 </div>
 <!-- ./wrapper -->
 

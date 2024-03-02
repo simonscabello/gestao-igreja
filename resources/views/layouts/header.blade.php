@@ -15,6 +15,14 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <form method="post" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="btn btn-link nav-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </form>
+        </li>
 
         <!-- Messages Dropdown Menu -->
 {{--        <li class="nav-item dropdown">--}}
@@ -100,11 +108,6 @@
 {{--                <div class="dropdown-divider"></div>--}}
 {{--                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>--}}
 {{--            </div>--}}
-{{--        </li>--}}
-{{--        <li class="nav-item">--}}
-{{--            <a class="nav-link" data-widget="fullscreen" href="#" role="button">--}}
-{{--                <i class="fas fa-expand-arrows-alt"></i>--}}
-{{--            </a>--}}
 {{--        </li>--}}
 {{--        <li class="nav-item">--}}
 {{--            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">--}}
