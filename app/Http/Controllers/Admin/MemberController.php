@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enum\MemberGenderEnum;
-use App\Enum\MemberMaritalStatusEnum;
 use App\Models\Member;
 use Illuminate\Http\Request;
+use App\Enum\MemberGenderEnum;
 use App\Http\Controllers\Controller;
+use App\Enum\MemberMaritalStatusEnum;
+use App\Http\Requests\StoreMemberRequest;
 
 class MemberController extends Controller
 {
@@ -34,12 +35,12 @@ class MemberController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(StoreMemberRequest $request)
     {
-        Member::create($request->all());
+        Member::create($request->validated());
+
+        toast('Membro cadastrado com sucesso!','success');
+
         return to_route('member.index');
     }
 

@@ -40,27 +40,61 @@
 
                         <div class="form-group">
                             <label for="name">Nome Completo*</label>
-                            <input type="text" class="form-control is-invalid" name="name" placeholder="Insira o nome completo">
-                            <span class="error invalid-feedback">Please enter a email address</span>
+                            <input
+                                type="text"
+                                class="form-control @error('name') is-invalid @enderror"
+                                name="name"
+                                placeholder="Insira o nome completo"
+                                value="{{ old('name') }}"
+                            >
+                            @error('name')
+                                <span class="error invalid-feedback"> {{ $message }} </span>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email </label>
-                            <input type="email" class="form-control" name="email" placeholder="Insira o email">
+                            <input
+                                type="email"
+                                class="form-control @error('email') is-invalid @enderror"
+                                name="email"
+                                placeholder="Insira o email"
+                                value="{{ old('email') }}"
+                            >
+                            @error('email')
+                                <span class="error invalid-feedback"> {{ $message }} </span>
+                            @enderror
                         </div>
 
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="phone_number">Telefone Fixo</label>
-                                    <input name="phone_number" type="tel" class="form-control" placeholder="Insira o telefone fixo">
+                                    <input
+                                        name="phone_number"
+                                        type="tel"
+                                        class="form-control @error('phone_number') is-invalid @enderror"
+                                        placeholder="Insira o telefone fixo"
+                                        value="{{ old('phone_number') }}"
+                                    >
+                                    @error('phone_number')
+                                        <span class="error invalid-feedback"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="cellphone">Celular</label>
-                                    <input name="cellphone" type="tel" class="form-control " placeholder="Insira o celular">
+                                    <input
+                                        name="cellphone"
+                                        type="tel"
+                                        class="form-control @error('cellphone') is-invalid @enderror"
+                                        placeholder="Insira o celular"
+                                    >
+                                    @error('cellphone')
+                                        <span class="error invalid-feedback"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -69,21 +103,27 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Gênero*</label>
-                                    <select class="form-control select2" name="gender" >
-                                        <option disabled="true" selected>---</option>
+
+                                    <select class="form-control @error('gender') is-invalid @enderror select2"
+                                        name="gender" >
+                                        <option disabled selected>---</option>
                                          @foreach ( $genders as  $gender)
                                             <option value="{{$gender->value}}">
                                                 {{ $gender->label() }}
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('gender')
+                                        <span class="error invalid-feedback"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Estado Civil</label>
-                                    <select class="form-control select2" name="marital_status">
+                                    <select class="form-control @error('marital_status') is-invalid @enderror select2"
+                                    name="marital_status">
                                         <option disabled="true" selected>---</option>
                                          @foreach ( $maritalStatuses as  $maritalStatus)
                                             <option value="{{$maritalStatus->value}}">
@@ -91,6 +131,9 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('marital_status')
+                                        <span class="error invalid-feedback"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -99,24 +142,51 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="birth_date">Data de Nascimento*</label>
-                                    <input name="birth_date" type="date" class="form-control"
-                                    data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+                                    <input
+                                        data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask
+                                        name="birth_date"
+                                        type="date"
+                                        class="form-control @error('birth_date') is-invalid @enderror"
+                                        placeholder=""
+                                        value="{{ old('birth_date') }}"
+                                    >
+                                    @error('birth_date')
+                                        <span class="error invalid-feedback"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="baptism_date">Data de Batismo</label>
-                                    <input name="baptism_date" type="date" class="form-control"
-                                    data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+                                    <input
+                                        data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask
+                                        name="baptism_date"
+                                        type="date"
+                                        class="form-control @error('baptism_date') is-invalid @enderror"
+                                        placeholder=""
+                                        value="{{ old('baptism_date') }}"
+                                    >
+                                    @error('baptism_date')
+                                        <span class="error invalid-feedback"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="admission_date">Data de Admissão</label>
-                                    <input name="admission_date" type="text" class="form-control"
-                                    data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+                                    <input
+                                        data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask
+                                        name="admission_date"
+                                        type="date"
+                                        class="form-control @error('admission_date') is-invalid @enderror"
+                                        placeholder=""
+                                        value="{{ old('admission_date') }}"
+                                    >
+                                    @error('admission_date')
+                                        <span class="error invalid-feedback"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
 

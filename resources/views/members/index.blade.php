@@ -60,7 +60,10 @@
                             <td> {{ $member->birth_date->format('d/m/Y')}} </td>
                             <td> {{ $member->gender->label()}}</td>
                             <td>  <a href="{{route('member.edit', $member)}}" class="btn btn-inline-block btn-primary btn-sm">
-                                <i class="fas fa-pen mr-1"></i>Editar </a> </td>
+                                <i class="fas fa-pen mr-1"></i>
+                                    Editar
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                   </tbody>
@@ -70,8 +73,6 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
-
           </div>
           <!-- /.col -->
         </div>
@@ -81,7 +82,4 @@
     </section>
     <!-- /.content -->
   </div>
-
-
-
 @endsection
