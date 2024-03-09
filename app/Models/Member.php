@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
-use DateTime;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enum\MemberGenderEnum;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 
+/**
+ * @method static create(array $all)
+ */
 class Member extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'name',
         'birth_date',
@@ -25,31 +24,10 @@ class Member extends Model
     ];
 
     protected $casts = [
-        'birth_date' => 'date',
+        'birth_date' => 'date:d/m/Y',
         'baptism_date' => 'date:d/m/Y',
-        'admission_date' => 'date',
-        'dismissed_date' => 'date',
+        'admission_date' => 'date:d/m/Y',
+        'dismissed_date' => 'date:d/m/Y',
+        'gender' => MemberGenderEnum::class,
     ];
-
-
-    protected function birthDate(): Attribute
-    {
-        return Attribute::make(
-            get: fn (DateTime $value) => $value->format('d/m/Y'),
-        );
-    }
-
-    // protected function baptismDate(): Attribute
-    // {
-    //     return Attribute::make(
-    //         get: fn (DateTime $value) => $value->format('d/m/Y'),
-    //     );
-    // }
-
-    protected function dismissedDate(): Attribute
-    {
-        return Attribute::make(
-            get: fn (DateTime $value) => $value->format('d/m/Y'),
-        );
-    }
 }

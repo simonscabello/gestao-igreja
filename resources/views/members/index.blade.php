@@ -48,7 +48,7 @@
                   <thead>
                   <tr>
                     <th>Nome</th>
-                    <th>Data de nascimento</th>
+                    <th>Data de Nascimento</th>
                     <th>Gênero</th>
                     <th>Ações</th>
                   </tr>
@@ -57,10 +57,13 @@
                     @foreach ($members as $member)
                         <tr>
                             <td> {{ $member->name}} </td>
-                            <td> {{ $member->birth_date}} </td>
-                            <td> {{ $member->gender}}</td>
-                            <td>  <a href="#" class="btn btn-inline-block btn-primary btn-sm">
-                                <i class="fas fa-pencil "></i></a> </td>
+                            <td> {{ $member->birth_date->format('d/m/Y')}} </td>
+                            <td> {{ $member->gender->label()}}</td>
+                            <td>  <a href="{{route('member.edit', $member)}}" class="btn btn-inline-block btn-primary btn-sm">
+                                <i class="fas fa-pen mr-1"></i>
+                                    Editar
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                   </tbody>
@@ -70,8 +73,6 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
-
           </div>
           <!-- /.col -->
         </div>
@@ -81,7 +82,4 @@
     </section>
     <!-- /.content -->
   </div>
-
-
-
 @endsection

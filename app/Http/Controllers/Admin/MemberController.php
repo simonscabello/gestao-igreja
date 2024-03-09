@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
+use App\Enum\MemberGenderEnum;
 use App\Http\Controllers\Controller;
+use App\Enum\MemberMaritalStatusEnum;
+use App\Http\Requests\StoreMemberRequest;
 
 class MemberController extends Controller
 {
@@ -23,15 +26,22 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('members.create');
+        $genders = MemberGenderEnum::cases();
+        $maritalStatuses = MemberMaritalStatusEnum::cases();
+
+        return view('members.create', [
+            'genders' => $genders,
+            'maritalStatuses' => $maritalStatuses,
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(StoreMemberRequest $request)
     {
-        //
+        Member::create($request->validated());
+
+        toast('Membro cadastrado com sucesso!','success');
+
+        return to_route('member.index');
     }
 
     /**
