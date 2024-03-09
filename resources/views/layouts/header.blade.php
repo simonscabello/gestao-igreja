@@ -13,7 +13,7 @@
             <form method="post" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="btn btn-link nav-link">
-                    <i class="fas fa-sign-out-alt"></i>
+                    <i class="fas fa-sign-out-alt"></i> Sair
                 </button>
             </form>
         </li>

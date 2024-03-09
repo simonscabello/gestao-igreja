@@ -6,7 +6,7 @@
     <title>{{ config('app.name') }}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('theme/img/favicon-sib.ico')}}">
 
-    <!-- Google Font: Roboto -->
+    <!-- Google Font: Open Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -27,6 +27,10 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('theme/css/adminlte.css') }}">
+
+    <!-- Custom style -->
+    <link rel="stylesheet" href="{{ asset('theme/css/custom.css') }}">
+
       <style>
       body {
         font-family: 'Open Sans', sans-serif;
