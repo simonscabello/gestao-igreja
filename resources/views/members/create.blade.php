@@ -124,7 +124,7 @@
                                     <label>Estado Civil</label>
                                     <select class="form-control @error('marital_status') is-invalid @enderror select2"
                                     name="marital_status">
-                                        <option disabled="true" selected>---</option>
+                                        <option disabled selected>---</option>
                                          @foreach ( $maritalStatuses as  $maritalStatus)
                                             <option value="{{$maritalStatus->value}}">
                                                 {{ $maritalStatus->label() }}
@@ -145,7 +145,7 @@
                                     <input
                                         data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask
                                         name="birth_date"
-                                        type="date"
+                                        type="text"
                                         class="form-control @error('birth_date') is-invalid @enderror"
                                         placeholder=""
                                         value="{{ old('birth_date') }}"
@@ -162,7 +162,7 @@
                                     <input
                                         data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask
                                         name="baptism_date"
-                                        type="date"
+                                        type="text"
                                         class="form-control @error('baptism_date') is-invalid @enderror"
                                         placeholder=""
                                         value="{{ old('baptism_date') }}"
@@ -179,7 +179,7 @@
                                     <input
                                         data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask
                                         name="admission_date"
-                                        type="date"
+                                        type="text"
                                         class="form-control @error('admission_date') is-invalid @enderror"
                                         placeholder=""
                                         value="{{ old('admission_date') }}"
