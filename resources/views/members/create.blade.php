@@ -69,7 +69,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Gênero*</label>
-                                    <select class="form-control" name="gender" >
+                                    <select class="form-control select2" name="gender" >
                                         <option disabled="true" selected>---</option>
                                          @foreach ( $genders as  $gender)
                                             <option value="{{$gender->value}}">
@@ -83,7 +83,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Estado Civil</label>
-                                    <select class="form-control" name="marital_status">
+                                    <select class="form-control select2" name="marital_status">
                                         <option disabled="true" selected>---</option>
                                          @foreach ( $maritalStatuses as  $maritalStatus)
                                             <option value="{{$maritalStatus->value}}">
@@ -99,21 +99,24 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="birth_date">Data de Nascimento*</label>
-                                    <input name="birth_date" type="date" class="form-control" placeholder="">
+                                    <input name="birth_date" type="date" class="form-control"
+                                    data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="baptism_date">Data de Batismo</label>
-                                    <input name="baptism_date" type="date" class="form-control" placeholder="">
+                                    <input name="baptism_date" type="date" class="form-control"
+                                    data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="admission_date">Data de Admissão</label>
-                                    <input name="admission_date" type="date" class="form-control " placeholder="">
+                                    <input name="admission_date" type="text" class="form-control"
+                                    data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
                                 </div>
                             </div>
 
