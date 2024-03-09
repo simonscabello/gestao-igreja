@@ -3,17 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Member;
-use Illuminate\Http\Request;
 use App\Enum\MemberGenderEnum;
 use App\Http\Controllers\Controller;
 use App\Enum\MemberMaritalStatusEnum;
 use App\Http\Requests\StoreMemberRequest;
+use App\Http\Requests\UpdateMemberRequest;
 
 class MemberController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $members = Member::all();
@@ -21,9 +18,6 @@ class MemberController extends Controller
         return view('members.index', ['members' => $members]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $genders = MemberGenderEnum::cases();
@@ -44,35 +38,34 @@ class MemberController extends Controller
         return to_route('member.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Member $member)
     {
         return view('members.show', ['member' => $member]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Member $member)
     {
-        //
+        $genders = MemberGenderEnum::cases();
+        $maritalStatuses = MemberMaritalStatusEnum::cases();
+
+        return view('members.edit', [
+            'member' => $member,
+            'genders' => $genders,
+            'maritalStatuses' => $maritalStatuses,
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Member $member)
+    public function update(UpdateMemberRequest $request, Member $member)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Member $member)
     {
-        //
+        $member->delete();
+
+        toast('Membro deletado com sucesso!','success');
+
+        return to_route('member.index');
     }
 }
