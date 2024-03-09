@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreMemberRequest extends FormRequest
@@ -11,18 +12,41 @@ class StoreMemberRequest extends FormRequest
         return true;
     }
 
+    public function prepareForValidation(): void
+    {
+        $birthDate = $this->get('birth_date');
+        $baptismDate = $this->get('baptism_date');
+        $admissionDate = $this->get('admission_date');
+
+        if ($birthDate) {
+            $birthDate = Carbon::createFromFormat('d/m/Y', $birthDate);
+        }
+        if ($baptismDate) {
+            $baptismDate = Carbon::createFromFormat('d/m/Y', $baptismDate);
+        }
+        if ($admissionDate) {
+            $admissionDate = Carbon::createFromFormat('d/m/Y', $admissionDate);
+        }
+
+        $this->merge([
+            'birth_date' => $birthDate,
+            'baptism_date' => $baptismDate,
+            'admission_date' => $admissionDate,
+        ]);
+    }
+
     public function rules(): array
     {
         return [
             'name' => ['required', 'string', 'max:255', 'min:3'],
-            'birth_date' => ['required', 'date'],
+            'birth_date' => ['required', 'date:d/m/Y'],
             'phone_number' => ['nullable', 'string', 'max:14', 'min:8'],
             'cellphone' => ['required', 'string', 'max:14', 'min:8'],
             'email' => ['nullable', 'email', 'max:255', 'min:3'],
-            'baptism_date' => ['nullable', 'date'],
+            'baptism_date' => ['nullable', 'date:d/m/Y'],
             'marital_status' => ['nullable', 'string'],
-            'gender' => ['nullable', 'string'],
-            'admission_date' => ['nullable', 'date'],
+            'gender' => ['required', 'string'],
+            'admission_date' => ['nullable', 'date:d/m/Y'],
         ];
     }
 
@@ -48,6 +72,7 @@ class StoreMemberRequest extends FormRequest
             'baptism_date.date' => 'O campo data de batismo deve ser uma data',
             'marital_status.string' => 'O campo estado civil deve ser uma string',
             'gender.string' => 'O campo gênero deve ser uma string',
+            'gender.required' => 'O campo gênero é obrigatório',
         ];
     }
 }

@@ -104,7 +104,7 @@
                                 <div class="form-group">
                                     <label>Gênero*</label>
 
-                                    <select class="form-control @error('gender') is-invalid @enderror select2"
+                                    <select class="form-control select2 @error('gender') is-invalid @enderror "
                                         name="gender" >
                                         <option disabled selected>---</option>
                                          @foreach ( $genders as  $gender)
@@ -122,7 +122,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Estado Civil</label>
-                                    <select class="form-control @error('marital_status') is-invalid @enderror select2"
+                                    <select class="form-control select2 @error('marital_status') is-invalid @enderror"
                                     name="marital_status">
                                         <option disabled selected>---</option>
                                          @foreach ( $maritalStatuses as  $maritalStatus)

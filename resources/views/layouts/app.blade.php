@@ -101,11 +101,13 @@
 
     $(function () {
         //Initialize Select2 Elements
-        $('.select2').select2()
+        $('.select2').select2({
+            width: '100%'
+        })
 
         //Initialize Select2 Elements
         $('.select2bs4').select2({
-        theme: 'bootstrap4'
+            theme: 'bootstrap4',
         })
 
         //Datemask dd/mm/yyyy
