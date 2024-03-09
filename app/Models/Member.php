@@ -3,16 +3,13 @@
 namespace App\Models;
 
 use App\Enum\MemberGenderEnum;
-use DateTime;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Support\Carbon;
 
+/**
+ * @method static create(array $all)
+ */
 class Member extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'name',
         'birth_date',
