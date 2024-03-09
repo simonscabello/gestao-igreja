@@ -34,31 +34,33 @@
                     <h3 class="card-title">Novo membro</h3>
                 </div>
 
-                <form>
+                <form action="{{route('member.store')}}" method="POST">
+                    @csrf
                     <div class="card-body">
 
                         <div class="form-group">
-                            <label for="inputName">Nome Completo*</label>
-                            <input type="text" class="form-control" id="inputName" placeholder="Insira o nome completo">
+                            <label for="name">Nome Completo*</label>
+                            <input type="text" class="form-control is-invalid" name="name" placeholder="Insira o nome completo">
+                            <span class="error invalid-feedback">Please enter a email address</span>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputEmail">Email </label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Insira o email">
+                            <label for="email">Email </label>
+                            <input type="email" class="form-control" name="email" placeholder="Insira o email">
                         </div>
 
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="">Telefone Fixo</label>
-                                    <input id="" type="number" class="form-control" placeholder="Insira o telefone fixo">
+                                    <label for="phone_number">Telefone Fixo</label>
+                                    <input name="phone_number" type="tel" class="form-control" placeholder="Insira o telefone fixo">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="">Celular</label>
-                                    <input id="" type="number" class="form-control" placeholder="Insira o celular">
+                                    <label for="cellphone">Celular</label>
+                                    <input name="cellphone" type="tel" class="form-control " placeholder="Insira o celular">
                                 </div>
                             </div>
                         </div>
@@ -67,10 +69,13 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Gênero*</label>
-                                    <select class="form-control">
-                                        <option></option>
-                                        <option>Feminino</option>
-                                        <option>Masculino</option>
+                                    <select class="form-control" name="gender" >
+                                        <option disabled="true" selected>---</option>
+                                         @foreach ( $genders as  $gender)
+                                            <option value="{{$gender->value}}">
+                                                {{ $gender->label() }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -78,51 +83,46 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Estado Civil</label>
-                                    <select class="form-control">
-                                        <option></option>
-                                        <option>Solteiro</option>
-                                        <option>Casado</option>
-                                        <option>Divorciado</option>
-                                        <option>Viúvo</option>
+                                    <select class="form-control" name="marital_status">
+                                        <option disabled="true" selected>---</option>
+                                         @foreach ( $maritalStatuses as  $maritalStatus)
+                                            <option value="{{$maritalStatus->value}}">
+                                                {{ $maritalStatus->label() }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="">Data de Nascimento*</label>
-                                    <input id="" type="date" class="form-control" placeholder="">
+                                    <label for="birth_date">Data de Nascimento*</label>
+                                    <input name="birth_date" type="date" class="form-control" placeholder="">
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="">Data de Batismo</label>
-                                    <input id="" type="date" class="form-control" placeholder="">
+                                    <label for="baptism_date">Data de Batismo</label>
+                                    <input name="baptism_date" type="date" class="form-control" placeholder="">
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="">Data de Admissão</label>
-                                    <input id="" type="date" class="form-control" placeholder="">
+                                    <label for="admission_date">Data de Admissão</label>
+                                    <input name="admission_date" type="date" class="form-control " placeholder="">
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label for="">Data de Saída</label>
-                                    <input id="" type="date" class="form-control" placeholder="">
-                                </div>
-                            </div>
                         </div>
 
                     </div>
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
                     </div>
                 </form>
             </div>
@@ -136,7 +136,5 @@
     </section>
     <!-- /.content -->
   </div>
-
-
 
 @endsection

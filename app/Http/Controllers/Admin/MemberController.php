@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enum\MemberGenderEnum;
+use App\Enum\MemberMaritalStatusEnum;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,7 +25,13 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('members.create');
+        $genders = MemberGenderEnum::cases();
+        $maritalStatuses = MemberMaritalStatusEnum::cases();
+
+        return view('members.create', [
+            'genders' => $genders,
+            'maritalStatuses' => $maritalStatuses,
+        ]);
     }
 
     /**
@@ -31,7 +39,8 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Member::create($request->all());
+        return to_route('member.index');
     }
 
     /**
