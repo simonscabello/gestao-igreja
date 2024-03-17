@@ -85,7 +85,7 @@
 
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="cellphone">Celular</label>
+                                    <label for="cellphone">Celular*</label>
                                     <input
                                         name="cellphone"
                                         type="tel"
