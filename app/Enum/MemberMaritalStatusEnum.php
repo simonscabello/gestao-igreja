@@ -19,4 +19,15 @@ enum MemberMaritalStatusEnum: string
             default => 'Não informado',
         };
     }
+
+    public static function valuesToArray(): array
+    {
+        $output = [];
+
+        foreach (self::cases() as $case) {
+            $output[] = $case->value;
+        }
+
+        return $output;
+    }
 }

@@ -78,6 +78,8 @@
 <script src="{{ asset('theme/plugins/moment/moment.min.js')}}"></script>
 <script src="{{ asset('theme/plugins/inputmask/jquery.inputmask.min.js')}}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <!-- overlayScrollbars -->
 <script src="{{ asset('theme/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
@@ -97,6 +99,9 @@
         "language": {
             "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json",
         },
+        "columnDefs": [
+            { "width": "15%", "targets": -1 }
+        ]
     })
 
     $(function () {

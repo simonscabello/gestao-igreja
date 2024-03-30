@@ -2,14 +2,24 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Enum\MemberGenderEnum;
+use App\Observers\MemberObserver;
+use App\Enum\MemberMaritalStatusEnum;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
 /**
- * @method static create(array $all)
+ * @property mixed $deleted_by
+ * @property Carbon|null $dismissed_date
  */
+#[ObservedBy(MemberObserver::class)]
 class Member extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'name',
         'birth_date',
@@ -21,13 +31,47 @@ class Member extends Model
         'gender',
         'admission_date',
         'dismissed_date',
+        'deleted_by',
     ];
 
     protected $casts = [
-        'birth_date' => 'date:d/m/Y',
-        'baptism_date' => 'date:d/m/Y',
-        'admission_date' => 'date:d/m/Y',
-        'dismissed_date' => 'date:d/m/Y',
         'gender' => MemberGenderEnum::class,
+        'marital_status' => MemberMaritalStatusEnum::class,
     ];
+
+    protected function birthDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn (?string $value) => $value ?
+                Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') :
+                null
+        );
+    }
+
+    protected function admissionDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn (?string $value) => $value ?
+                Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') :
+                null,
+        );
+    }
+
+    protected function dismissedDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn (?string $value) => $value ?
+                Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') :
+                null
+        );
+    }
+
+    protected function baptismDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn (?string $value) => $value ?
+                Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') :
+                null,
+        );
+    }
 }
