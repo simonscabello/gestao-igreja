@@ -3,22 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Member;
+use Illuminate\View\View;
 use App\Enum\MemberGenderEnum;
 use App\Http\Controllers\Controller;
 use App\Enum\MemberMaritalStatusEnum;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
 
 class MemberController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $members = Member::all();
 
         return view('members.index', ['members' => $members]);
     }
 
-    public function create()
+    public function create(): View
     {
         $genders = MemberGenderEnum::cases();
         $maritalStatuses = MemberMaritalStatusEnum::cases();
@@ -29,7 +31,7 @@ class MemberController extends Controller
         ]);
     }
 
-    public function store(StoreMemberRequest $request)
+    public function store(StoreMemberRequest $request): RedirectResponse
     {
         Member::create($request->validated());
 
@@ -38,12 +40,12 @@ class MemberController extends Controller
         return to_route('member.index');
     }
 
-    public function show(Member $member)
+    public function show(Member $member): View
     {
         return view('members.show', ['member' => $member]);
     }
 
-    public function edit(Member $member)
+    public function edit(Member $member): View
     {
         $genders = MemberGenderEnum::cases();
         $maritalStatuses = MemberMaritalStatusEnum::cases();
@@ -55,12 +57,16 @@ class MemberController extends Controller
         ]);
     }
 
-    public function update(UpdateMemberRequest $request, Member $member)
+    public function update(UpdateMemberRequest $request, Member $member): RedirectResponse
     {
-        //
+        $member->update($request->validated());
+
+        toast('Membro atualizado com sucesso!','success');
+
+        return to_route('member.index');
     }
 
-    public function destroy(Member $member)
+    public function destroy(Member $member): RedirectResponse
     {
         $member->delete();
 

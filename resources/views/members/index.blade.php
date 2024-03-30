@@ -57,12 +57,17 @@
                     @foreach ($members as $member)
                         <tr>
                             <td> {{ $member->name}} </td>
-                            <td> {{ $member->birth_date->format('d/m/Y')}} </td>
-                            <td> {{ $member->gender->label()}}</td>
-                            <td>  <a href="{{route('member.edit', $member)}}" class="btn btn-inline-block btn-primary btn-sm">
-                                <i class="fas fa-pen mr-1"></i>
-                                    Editar
-                                </a>
+                            <td> {{ $member->birth_date}} </td>
+                            <td> {{ $member->gender?->label()}}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Ações">
+                                    <a href="{{ route('member.edit', $member) }}" class="btn btn-primary btn-sm mr-1" role="button">
+                                        <i class="fas fa-pen"></i> Editar
+                                    </a>
+                                    <a href="{{ route('member.show', $member) }}" class="btn btn-info btn-sm" role="button">
+                                        <i class="fas fa-eye"></i> Visualizar
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

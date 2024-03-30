@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Carbon\Carbon;
+use App\Enum\MemberGenderEnum;
+use Illuminate\Validation\Rule;
+use App\Enum\MemberMaritalStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreMemberRequest extends FormRequest
@@ -44,8 +47,8 @@ class StoreMemberRequest extends FormRequest
             'cellphone' => ['required', 'string', 'max:14', 'min:8'],
             'email' => ['nullable', 'email', 'max:255', 'min:3'],
             'baptism_date' => ['nullable', 'date:d/m/Y'],
-            'marital_status' => ['nullable', 'string'],
-            'gender' => ['required', 'string'],
+            'marital_status' => ['nullable', Rule::enum(MemberMaritalStatusEnum::class)],
+            'gender' => ['required', Rule::enum(MemberGenderEnum::class)],
             'admission_date' => ['nullable', 'date:d/m/Y'],
         ];
     }
@@ -70,8 +73,8 @@ class StoreMemberRequest extends FormRequest
             'email.max' => 'O campo email deve ter no máximo 255 caracteres',
             'email.min' => 'O campo email deve ter no mínimo 3 caracteres',
             'baptism_date.date' => 'O campo data de batismo deve ser uma data',
-            'marital_status.string' => 'O campo estado civil deve ser uma string',
-            'gender.string' => 'O campo gênero deve ser uma string',
+            'marital_status.enum' => 'O campo estado civil deve ser um dos valores: ' . implode(', ', MemberMaritalStatusEnum::valuesToArray()),
+            'gender.enum' => 'O campo gênero deve ser um dos valores: ' . implode(', ', MemberGenderEnum::valuesToArray()),
             'gender.required' => 'O campo gênero é obrigatório',
         ];
     }

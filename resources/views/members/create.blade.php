@@ -91,6 +91,7 @@
                                         type="tel"
                                         class="form-control @error('cellphone') is-invalid @enderror"
                                         placeholder="Insira o celular"
+                                        value="{{ old('cellphone') }}"
                                     >
                                     @error('cellphone')
                                         <span class="error invalid-feedback"> {{ $message }} </span>
@@ -108,7 +109,7 @@
                                         name="gender" >
                                         <option disabled selected>---</option>
                                          @foreach ( $genders as  $gender)
-                                            <option value="{{$gender->value}}">
+                                            <option value="{{$gender}}" @if( old('gender') == $gender) selected @endif>
                                                 {{ $gender->label() }}
                                             </option>
                                         @endforeach
@@ -125,8 +126,8 @@
                                     <select class="form-control select2 @error('marital_status') is-invalid @enderror"
                                     name="marital_status">
                                         <option disabled selected>---</option>
-                                         @foreach ( $maritalStatuses as  $maritalStatus)
-                                            <option value="{{$maritalStatus->value}}">
+                                         @foreach ( $maritalStatuses as $maritalStatus)
+                                            <option value="{{$maritalStatus}}" @if( old('marital_status') == $maritalStatus) selected @endif>
                                                 {{ $maritalStatus->label() }}
                                             </option>
                                         @endforeach
@@ -199,15 +200,10 @@
                     </div>
                 </form>
             </div>
-
           </div>
-          <!-- /.col -->
         </div>
-        <!-- /.row -->
       </div>
-      <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
   </div>
 
 @endsection
