@@ -194,6 +194,83 @@
 
                                     </div>
 
+                                    <hr>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group ">
+                                                <label for="zipcode">CEP*</label>
+                                                <input id="zipcode" type="text" name="zipcode" value=" {{ old('zipcode') ?? $member->address?->zipcode }}" class="form-control @error('zipcode') is-invalid @enderror">
+                                            </div>
+                                            @error('zipcode')
+                                            <span class="error invalid-feedback"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-sm-9">
+                                            <div class="form-group">
+                                                <label for="street">Rua</label>
+                                                <input id="street" type="text" name="street" value=" {{ old('street') ?? $member->address?->street }}" class="form-control @error('street') is-invalid @enderror">
+                                            </div>
+                                            @error('street')
+                                            <span class="error invalid-feedback"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="neighborhood">Bairro</label>
+                                                <input id="neighborhood" type="text" name="neighborhood" value=" {{ old('neighborhood') ?? $member->address?->neighborhood }}" class="form-control @error('neighborhood') is-invalid @enderror">
+                                            </div>
+                                            @error('neighborhood')
+                                            <span class="error invalid-feedback"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="city">Cidade</label>
+                                                <input id="city" type="text" name="city" value=" {{ old('city') ?? $member->address?->city }}" class="form-control @error('city') is-invalid @enderror">
+                                            </div>
+                                            @error('city')
+                                            <span class="error invalid-feedback"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="state">Estado</label>
+                                                <input id="state" type="text" name="state" value=" {{ old('state') ?? $member->address?->state }}" class="form-control @error('state') is-invalid @enderror">
+                                            </div>
+                                            @error('state')
+                                            <span class="error invalid-feedback"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="number">Número</label>
+                                                <input id="number" type="text" name="number" value=" {{ old('number') ?? $member->address?->number }}" class="form-control @error('number') is-invalid @enderror">
+                                            </div>
+                                            @error('number')
+                                            <span class="error invalid-feedback"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="complement">Complemento</label>
+                                                <input id="complement" type="text" name="complement" value=" {{ old('complement') ?? $member->address?->complement }}" class="form-control @error('complement') is-invalid @enderror">
+                                            </div>
+                                            @error('complement')
+                                            <span class="error invalid-feedback"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="card-footer">
@@ -206,5 +283,10 @@
             </div>
         </section>
     </div>
+
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/members/address_fields.js') }}"></script>
 
 @endsection

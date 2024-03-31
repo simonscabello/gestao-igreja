@@ -9,11 +9,14 @@ use App\Enum\MemberMaritalStatusEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
 /**
- * @property mixed $deleted_by
+ * @property int $deleted_by
  * @property Carbon|null $dismissed_date
+ * @property Address $address
+ * @method static create(mixed $validated)
  */
 #[ObservedBy(MemberObserver::class)]
 class Member extends Model
@@ -38,6 +41,11 @@ class Member extends Model
         'gender' => MemberGenderEnum::class,
         'marital_status' => MemberMaritalStatusEnum::class,
     ];
+
+    public function address(): HasOne
+    {
+        return $this->hasOne(Address::class);
+    }
 
     protected function birthDate(): Attribute
     {
