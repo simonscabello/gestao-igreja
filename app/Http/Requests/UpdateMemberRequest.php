@@ -49,6 +49,13 @@ class UpdateMemberRequest extends FormRequest
             'marital_status' => ['nullable', 'string'],
             'gender' => ['required', Rule::enum(MemberGenderEnum::class)],
             'admission_date' => ['nullable', 'date:d/m/Y'],
+            'street' => ['required', 'string'],
+            'number' => ['required', 'string'],
+            'complement' => ['nullable', 'string'],
+            'neighborhood' => ['required', 'string'],
+            'city' => ['required', 'string'],
+            'state' => ['required', 'string'],
+            'zipcode' => ['required', 'string'],
         ];
     }
 
@@ -75,6 +82,20 @@ class UpdateMemberRequest extends FormRequest
             'marital_status.string' => 'O campo estado civil deve ser uma string',
             'gender.required' => 'O campo gênero é obrigatório',
             'gender.enum' => 'O campo gênero deve ser um dos valores: ' . implode(', ', MemberGenderEnum::valuesToArray()),
+            'admission_date.date' => 'O campo data de admissão deve ser uma data',
+            'street.required' => 'O campo rua é obrigatório',
+            'street.string' => 'O campo rua deve ser uma string',
+            'number.required' => 'O campo número é obrigatório',
+            'number.string' => 'O campo número deve ser uma string',
+            'complement.string' => 'O campo complemento deve ser uma string',
+            'neighborhood.required' => 'O campo bairro é obrigatório',
+            'neighborhood.string' => 'O campo bairro deve ser uma string',
+            'city.required' => 'O campo cidade é obrigatório',
+            'city.string' => 'O campo cidade deve ser uma string',
+            'state.required' => 'O campo estado é obrigatório',
+            'state.string' => 'O campo estado deve ser uma string',
+            'zip_code.required' => 'O campo CEP é obrigatório',
+            'zip_code.string' => 'O campo CEP deve ser uma string',
         ];
     }
 }
