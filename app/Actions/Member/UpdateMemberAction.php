@@ -11,7 +11,12 @@ class UpdateMemberAction
     {
         DB::transaction(function () use ($data, $member) {
             $member->update($data);
-            $member->address->update($data);
+            if ($member->address) {
+                $member->address->update($data);
+                return;
+            }
+            $data['member_id'] = $member->id;
+            $member->address()->create($data);
         });
     }
 }
