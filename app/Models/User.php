@@ -9,7 +9,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @method static create(array $array)
+ * @method static where(string $string, mixed $token)
  * @property int $id
+ * @property string $invitation_token
  */
 class User extends Authenticatable
 {
@@ -21,6 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'invitation_token',
+        'active',
     ];
 
     protected $hidden = [
