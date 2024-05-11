@@ -34,11 +34,20 @@
                     </a>
                 </li>
 
-                  <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{route('member.index')}}" class="nav-link {{Route::is('member.*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Membros
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{route('admin.index')}}" class="nav-link {{Route::is('admin.*') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-user-tie"></i>
+                        <p>
+                            Usuários
                         </p>
                     </a>
                 </li>
