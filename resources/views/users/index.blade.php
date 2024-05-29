@@ -67,10 +67,10 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Ações">
-                                                    <form action="{{ route('admin.destroy', $user) }}" method="POST">
+                                                    <form id="delete-form-{{ $user->id }}" action="{{ route('admin.destroy', $user) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm mr-1">
+                                                        <button type="button" class="btn btn-danger btn-sm mr-1" onclick="confirmDelete({{ $user->id }})">
                                                             <i class="fas fa-trash"></i> Remover
                                                         </button>
                                                     </form>
@@ -94,4 +94,25 @@
         </section>
         <!-- /.content -->
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        function confirmDelete(userId) {
+            Swal.fire({
+                title: 'Você tem certeza?',
+                text: "Esta ação não pode ser desfeita!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, remover!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#delete-form-' + userId).submit();
+                }
+            });
+        }
+    </script>
 @endsection
