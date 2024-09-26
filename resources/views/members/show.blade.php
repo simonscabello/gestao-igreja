@@ -71,6 +71,12 @@
                                         <strong>Data de Batismo:</strong>
                                         <p>{{ $member->baptism_date }}</p>
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <strong>Data de Casamento:</strong>
+                                        <p>{{ $member->wedding_date }}</p>
+                                    </div>
                                     <div class="col-sm-3">
                                         <strong>Data de Admissão:</strong>
                                         <p>{{ $member->admission_date }}</p>

@@ -20,6 +20,7 @@ class StoreMemberRequest extends FormRequest
         $birthDate = $this->get('birth_date');
         $baptismDate = $this->get('baptism_date');
         $admissionDate = $this->get('admission_date');
+        $weddingDate = $this->get('wedding_date');
 
         if ($birthDate) {
             $birthDate = Carbon::createFromFormat('d/m/Y', $birthDate);
@@ -30,11 +31,15 @@ class StoreMemberRequest extends FormRequest
         if ($admissionDate) {
             $admissionDate = Carbon::createFromFormat('d/m/Y', $admissionDate);
         }
+        if ($weddingDate) {
+            $weddingDate = Carbon::createFromFormat('d/m/Y', $weddingDate);
+        }
 
         $this->merge([
             'birth_date' => $birthDate,
             'baptism_date' => $baptismDate,
             'admission_date' => $admissionDate,
+            'wedding_date' => $weddingDate,
         ]);
     }
 
@@ -57,6 +62,7 @@ class StoreMemberRequest extends FormRequest
             'city' => ['required', 'string'],
             'state' => ['required', 'string'],
             'zipcode' => ['required', 'string'],
+            'wedding_date' => ['nullable', 'date:d/m/Y'],
         ];
     }
 
@@ -97,6 +103,7 @@ class StoreMemberRequest extends FormRequest
             'state.string' => 'O campo estado deve ser uma string',
             'zip_code.required' => 'O campo CEP é obrigatório',
             'zip_code.string' => 'O campo CEP deve ser uma string',
+            'wedding_date.date' => 'O campo data de casamento deve ser uma data',
         ];
     }
 }

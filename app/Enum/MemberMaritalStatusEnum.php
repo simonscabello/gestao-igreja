@@ -4,6 +4,8 @@ namespace App\Enum;
 
 enum MemberMaritalStatusEnum: string
 {
+    use ValuesToArray;
+
     case SINGLE = 'single';
     case MARRIED = 'married';
     case DIVORCED = 'divorced';
@@ -18,16 +20,5 @@ enum MemberMaritalStatusEnum: string
             self::WIDOWER->value => 'Viúvo',
             default => 'Não informado',
         };
-    }
-
-    public static function valuesToArray(): array
-    {
-        $output = [];
-
-        foreach (self::cases() as $case) {
-            $output[] = $case->value;
-        }
-
-        return $output;
     }
 }

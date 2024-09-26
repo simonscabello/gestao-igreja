@@ -35,6 +35,7 @@ class Member extends Model
         'admission_date',
         'dismissed_date',
         'deleted_by',
+        'wedding_date',
     ];
 
     protected $casts = [
@@ -75,6 +76,15 @@ class Member extends Model
     }
 
     protected function baptismDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn (?string $value) => $value ?
+                Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') :
+                null,
+        );
+    }
+
+    protected function weddingDate(): Attribute
     {
         return Attribute::make(
             get: fn (?string $value) => $value ?
