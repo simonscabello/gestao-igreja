@@ -4,6 +4,8 @@ namespace App\Enum;
 
 enum MemberGenderEnum: string
 {
+    use ValuesToArray;
+
     case FEMALE = 'female';
     case MALE = 'male';
 
@@ -14,16 +16,5 @@ enum MemberGenderEnum: string
             self::MALE->value => 'Masculino',
             default => 'Não informado',
         };
-    }
-
-    public static function valuesToArray(): array
-    {
-        $output = [];
-
-        foreach (self::cases() as $case) {
-            $output[] = $case->value;
-        }
-
-        return $output;
     }
 }

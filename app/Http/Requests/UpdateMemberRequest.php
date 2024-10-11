@@ -19,6 +19,7 @@ class UpdateMemberRequest extends FormRequest
         $birthDate = $this->get('birth_date');
         $baptismDate = $this->get('baptism_date');
         $admissionDate = $this->get('admission_date');
+        $weddingDate = $this->get('wedding_date');
 
         if ($birthDate) {
             $birthDate = Carbon::createFromFormat('d/m/Y', $birthDate);
@@ -29,11 +30,15 @@ class UpdateMemberRequest extends FormRequest
         if ($admissionDate) {
             $admissionDate = Carbon::createFromFormat('d/m/Y', $admissionDate);
         }
+        if ($weddingDate) {
+            $weddingDate = Carbon::createFromFormat('d/m/Y', $weddingDate);
+        }
 
         $this->merge([
             'birth_date' => $birthDate,
             'baptism_date' => $baptismDate,
             'admission_date' => $admissionDate,
+            'wedding_date' => $weddingDate,
         ]);
     }
 
@@ -49,6 +54,14 @@ class UpdateMemberRequest extends FormRequest
             'marital_status' => ['nullable', 'string'],
             'gender' => ['required', Rule::enum(MemberGenderEnum::class)],
             'admission_date' => ['nullable', 'date:d/m/Y'],
+            'street' => ['required', 'string'],
+            'number' => ['required', 'string'],
+            'complement' => ['nullable', 'string'],
+            'neighborhood' => ['required', 'string'],
+            'city' => ['required', 'string'],
+            'state' => ['required', 'string'],
+            'zipcode' => ['required', 'string'],
+            'wedding_date' => ['nullable', 'date:d/m/Y'],
         ];
     }
 
@@ -75,6 +88,21 @@ class UpdateMemberRequest extends FormRequest
             'marital_status.string' => 'O campo estado civil deve ser uma string',
             'gender.required' => 'O campo gênero é obrigatório',
             'gender.enum' => 'O campo gênero deve ser um dos valores: ' . implode(', ', MemberGenderEnum::valuesToArray()),
+            'admission_date.date' => 'O campo data de admissão deve ser uma data',
+            'street.required' => 'O campo rua é obrigatório',
+            'street.string' => 'O campo rua deve ser uma string',
+            'number.required' => 'O campo número é obrigatório',
+            'number.string' => 'O campo número deve ser uma string',
+            'complement.string' => 'O campo complemento deve ser uma string',
+            'neighborhood.required' => 'O campo bairro é obrigatório',
+            'neighborhood.string' => 'O campo bairro deve ser uma string',
+            'city.required' => 'O campo cidade é obrigatório',
+            'city.string' => 'O campo cidade deve ser uma string',
+            'state.required' => 'O campo estado é obrigatório',
+            'state.string' => 'O campo estado deve ser uma string',
+            'zip_code.required' => 'O campo CEP é obrigatório',
+            'zip_code.string' => 'O campo CEP deve ser uma string',
+            'wedding_date.date' => 'O campo data de casamento deve ser uma data',
         ];
     }
 }

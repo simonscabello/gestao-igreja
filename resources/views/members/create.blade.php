@@ -140,7 +140,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label for="birth_date">Data de Nascimento*</label>
                                     <input
@@ -157,7 +157,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label for="baptism_date">Data de Batismo</label>
                                     <input
@@ -174,7 +174,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label for="admission_date">Data de Admissão</label>
                                     <input
@@ -187,6 +187,23 @@
                                     >
                                     @error('admission_date')
                                         <span class="error invalid-feedback"> {{ $message }} </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="admission_date">Data de Casamento</label>
+                                    <input
+                                        data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask
+                                        name="wedding_date"
+                                        type="text"
+                                        class="form-control @error('wedding_date') is-invalid @enderror"
+                                        placeholder=""
+                                        value="{{ old('wedding_date') }}"
+                                    >
+                                    @error('wedding_date')
+                                    <span class="error invalid-feedback"> {{ $message }} </span>
                                     @enderror
                                 </div>
                             </div>

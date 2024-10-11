@@ -40,5 +40,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])
         ->name('dashboard');
+
     Route::resource('member', MemberController::class);
 });

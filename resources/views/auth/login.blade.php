@@ -29,7 +29,7 @@
              <img src="{{ asset('theme/img/logo-sib.png') }}">
         </div>
         <div class="card-body">
-            <p class="login-box-msg">Seja bem-vindo! Por favor, faça login para começar.</p>
+            <p class="login-box-msg">Olá, seja bem-vindo! Faça login para começar.</p>
 
             <form action="{{ route('login') }}" method="post">
                 @csrf
