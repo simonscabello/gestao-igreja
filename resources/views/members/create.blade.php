@@ -109,7 +109,7 @@
                                         name="gender" >
                                         <option disabled selected>---</option>
                                          @foreach ( $genders as  $gender)
-                                            <option value="{{$gender}}" @if( old('gender') == $gender) selected @endif>
+                                            <option value="{{$gender}}" @if( old('gender') == $gender->value) selected @endif>
                                                 {{ $gender->label() }}
                                             </option>
                                         @endforeach
@@ -127,7 +127,7 @@
                                     name="marital_status">
                                         <option disabled selected>---</option>
                                          @foreach ( $maritalStatuses as $maritalStatus)
-                                            <option value="{{$maritalStatus}}" @if( old('marital_status') == $maritalStatus) selected @endif>
+                                            <option value="{{$maritalStatus}}" @if( old('marital_status') == $maritalStatus->value) selected @endif>
                                                 {{ $maritalStatus->label() }}
                                             </option>
                                         @endforeach

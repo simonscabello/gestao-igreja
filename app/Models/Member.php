@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Attributes\ObservedBy;
  * @property Carbon|null $dismissed_date
  * @property Address $address
  * @method static create(mixed $validated)
+ * @method static orderBy(string $string)
  */
 #[ObservedBy(MemberObserver::class)]
 class Member extends Model
