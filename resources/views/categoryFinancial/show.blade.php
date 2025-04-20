@@ -41,7 +41,7 @@
                                 </div>
                             </div>
 
-                            
+
                             <div class="card-body">
 
                                 <div class="form-group">
@@ -52,7 +52,7 @@
                                         value="{{ $financialCategory->name }}"
                                         readonly
                                     >
-                                    
+
                                 </div>
 
 
@@ -70,14 +70,13 @@
                                 <div class="form-group">
                                     <label>Ativo</label>
 
-                                    <input 
+                                    <input
                                         type="text"
                                         value="@if ($financialCategory->active) Ativo @else Inativo @endif"
                                         class="form-control"
                                         readonly
                                     >
-                                    </input>
-                                
+
                                 </div>
                             </div>
 

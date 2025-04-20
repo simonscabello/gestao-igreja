@@ -2,22 +2,22 @@
 
 namespace Database\Factories;
 
+use App\Models\FinancialCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\FinancialCategory>
+ * @extends Factory<FinancialCategory>
  */
 class FinancialCategoryFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = FinancialCategory::class;
+
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->unique()->word(),
+            'description' => $this->faker->sentence(),
+            'active' => $this->faker->boolean(),
         ];
     }
 }

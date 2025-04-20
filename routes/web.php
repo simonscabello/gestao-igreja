@@ -47,10 +47,10 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('categoryFinancial', FinancialCategoryController::class)
         ->except(['destroy']);
-    Route::patch('/categoryFinancial/{financialCategory}/activate', [FinancialCategoryController::class, 'activate'])
-        ->name('financial_categories.activate');
-    Route::patch('/categoryFinancial/{financialCategory}/deactivate', [FinancialCategoryController::class, 'deactivate'])
-        ->name('financial_categories.deactivate');
+    Route::patch('/categoryFinancial/{categoryFinancial}/activate', [FinancialCategoryController::class, 'activate'])
+        ->name('categoryFinancial.activate');
+    Route::patch('/categoryFinancial/{categoryFinancial}/deactivate', [FinancialCategoryController::class, 'deactivate'])
+        ->name('categoryFinancial.deactivate');
 
     Route::resource('transaction', TransactionController::class)
         ->except(['destroy']);
