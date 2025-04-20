@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MemberController;
+use App\Http\Controllers\Admin\FinancialCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,11 @@ Route::middleware('auth')->group(function () {
         ->name('dashboard');
 
     Route::resource('member', MemberController::class);
+
+    Route::resource('categoryFinancial', FinancialCategoryController::class)
+        ->except(['destroy']);
+    Route::patch('/categoryFinancial/{financialCategory}/activate', [FinancialCategoryController::class, 'activate'])
+        ->name('financial_categories.activate');
+    Route::patch('/categoryFinancial/{financialCategory}/deactivate', [FinancialCategoryController::class, 'deactivate'])
+        ->name('financial_categories.deactivate');
 });
