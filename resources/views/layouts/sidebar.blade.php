@@ -44,6 +44,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{route('transactions.index')}}" class="nav-link {{Route::is('transaction.*') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-money-bill-wave"></i>
+                        <p>
+                            Financeiro
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{route('admin.index')}}" class="nav-link {{Route::is('admin.*') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-user-tie"></i>
                         <p>
