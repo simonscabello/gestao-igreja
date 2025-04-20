@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * @method static orderBy(string $string)
  * @method static create(mixed $validated)
+ * @method static count()
+ * @method static first()
  */
 class FinancialCategory extends Model
 {

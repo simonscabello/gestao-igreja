@@ -28,7 +28,7 @@ class FinancialCategoryController extends Controller
 
         toast('Categoria financeira cadastrada com sucesso!', 'success');
 
-        return to_route('financial_categories.show', $financialCategory);
+        return to_route('categoryFinancial.show', $financialCategory);
     }
 
     public function edit(FinancialCategory $financialCategory): View
@@ -42,7 +42,7 @@ class FinancialCategoryController extends Controller
 
         toast('Categoria financeira atualizada com sucesso!', 'success');
 
-        return to_route('financial_categories.show', $financialCategory);
+        return to_route('categoryFinancial.show', $financialCategory);
     }
 
     public function activate(FinancialCategory $financialCategory): RedirectResponse
@@ -51,7 +51,7 @@ class FinancialCategoryController extends Controller
 
         toast('Categoria financeira ativada com sucesso!', 'success');
 
-        return to_route('financial_categories.index');
+        return to_route('categoryFinancial.index');
     }
 
     public function deactivate(FinancialCategory $financialCategory): RedirectResponse
@@ -60,6 +60,6 @@ class FinancialCategoryController extends Controller
 
         toast('Categoria financeira desativada com sucesso!', 'success');
 
-        return to_route('financial_categories.index');
+        return to_route('categoryFinancial.index');
     }
 }

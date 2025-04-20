@@ -11,15 +11,6 @@ class FinancialCategoryRequest extends FormRequest
         return true;
     }
 
-    protected function prepareForValidation(): void
-    {
-        if ($this->filled('active')) {
-            $this->merge([
-                'active' => (bool) $this->input('active'),
-            ]);
-        }
-    }
-
     public function rules(): array
     {
         return [
