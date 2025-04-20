@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\View\View;
 use App\Models\Transaction;
+use App\Models\FinancialCategory;
+use App\Enum\TransactionTypeEnum;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\TransactionRequest;
 
 class TransactionController extends Controller
 {
@@ -19,12 +23,22 @@ class TransactionController extends Controller
 
     public function create(): View
     {
-        return view('transactions.create');
+        $financialCategories = FinancialCategory::orderBy('name')->get();
+        $types = TransactionTypeEnum::cases();
+
+        return view('transactions.create', [
+            'financialCategories' => $financialCategories,
+            'types' => $types,
+        ]);
     }
 
-    public function store(Request $request)
+    public function store(TransactionRequest $request): RedirectResponse
     {
-        // Logic to store a new transaction
+        $transaction = Transaction::create($request->validated());
+
+        toast('Transação criada com sucesso!', 'success');
+
+        return to_route('transactions.show', $transaction);
     }
 
     public function show(Transaction $transaction): View
@@ -36,13 +50,24 @@ class TransactionController extends Controller
 
     public function edit(Transaction $transaction): View
     {
+        $transaction->load('category');
+
+        $financialCategories = FinancialCategory::orderBy('name')->get();
+        $types = TransactionTypeEnum::cases();
+
         return view('transactions.edit', [
             'transaction' => $transaction,
+            'financialCategories' => $financialCategories,
+            'types' => $types,
         ]);
     }
 
-    public function update(Request $request, Transaction $transaction)
+    public function update(TransactionRequest $request, Transaction $transaction): RedirectResponse
     {
-        // Logic to update an existing transaction
+        $transaction->update($request->validated());
+
+        toast('Transação atualizada com sucesso!', 'success');
+
+        return to_route('transactions.index');
     }
 }
