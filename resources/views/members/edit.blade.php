@@ -77,6 +77,8 @@
                                                     class="form-control @error('phone_number') is-invalid @enderror"
                                                     placeholder="Insira o telefone fixo"
                                                     value="{{ old('phone_number') ?? $member->phone_number }}"
+                                                    data-inputmask="'mask': '(99) 9999-9999'"
+                                                    data-mask
                                                 >
                                                 @error('phone_number')
                                                 <span class="error invalid-feedback"> {{ $message }} </span>
@@ -93,6 +95,8 @@
                                                     class="form-control @error('cellphone') is-invalid @enderror"
                                                     placeholder="Insira o celular"
                                                     value="{{ old('cellphone') ?? $member->cellphone }}"
+                                                    data-inputmask="'mask': '(99) 99999-9999'"
+                                                    data-mask
                                                 >
                                                 @error('cellphone')
                                                 <span class="error invalid-feedback"> {{ $message }} </span>
@@ -219,7 +223,16 @@
                                         <div class="col-sm-3">
                                             <div class="form-group ">
                                                 <label for="zipcode">CEP*</label>
-                                                <input id="zipcode" type="text" name="zipcode" value=" {{ old('zipcode') ?? $member->address?->zipcode }}" class="form-control @error('zipcode') is-invalid @enderror">
+                                                <input
+                                                    id="zipcode"
+                                                    type="text"
+                                                    name="zipcode"
+                                                    value="{{ old('zipcode') ?? $member->address?->zipcode }}"
+                                                    class="form-control @error('zipcode') is-invalid @enderror"
+                                                    inputmode="numeric"
+                                                    data-inputmask="'mask': '99999-999'"
+                                                    data-mask
+                                                >
                                             </div>
                                             @error('zipcode')
                                             <span class="error invalid-feedback"> {{ $message }} </span>

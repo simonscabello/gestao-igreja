@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
 /**
@@ -18,11 +19,15 @@ use Illuminate\Database\Eloquent\Attributes\ObservedBy;
  * @property Address $address
  * @method static create(mixed $validated)
  * @method static orderBy(string $string)
+ * @method static count()
+ * @method static first()
+ * @method static latest(string $string)
  */
 #[ObservedBy(MemberObserver::class)]
 class Member extends Model
 {
     use SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'name',

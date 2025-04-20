@@ -56,9 +56,9 @@
                   <tbody>
                     @foreach ($members as $member)
                         <tr>
-                            <td> {{ $member->name}} </td>
-                            <td> {{ $member->birth_date}} </td>
-                            <td> {{ $member->gender?->label()}}</td>
+                            <td> {{ $member->name }} </td>
+                            <td> {{ $member->birth_date }} </td>
+                            <td> {{ $member->gender?->label() }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Ações">
                                     <a href="{{ route('member.edit', $member) }}" class="btn btn-primary btn-sm mr-1" role="button">
