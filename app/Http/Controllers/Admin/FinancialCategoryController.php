@@ -14,12 +14,12 @@ class FinancialCategoryController extends Controller
     {
         $financialCategories = FinancialCategory::orderBy('name')->get();
 
-        return view('financial_categories.index', ['financialCategories' => $financialCategories]);
+        return view('categoryFinancial.index', ['financialCategories' => $financialCategories]);
     }
 
     public function create(): View
     {
-        return view('financial_categories.create');
+        return view('categoryFinancial.create');
     }
 
     public function store(FinancialCategoryRequest $request): RedirectResponse
@@ -33,7 +33,7 @@ class FinancialCategoryController extends Controller
 
     public function edit(FinancialCategory $financialCategory): View
     {
-        return view('financial_categories.edit', ['financialCategory' => $financialCategory]);
+        return view('categoryFinancial.edit', ['financialCategory' => $financialCategory]);
     }
 
     public function update(FinancialCategoryRequest $request, FinancialCategory $financialCategory): RedirectResponse
