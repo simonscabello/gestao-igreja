@@ -24,44 +24,44 @@ class FinancialCategoryController extends Controller
 
     public function store(FinancialCategoryRequest $request): RedirectResponse
     {
-        $financialCategory = FinancialCategory::create($request->validated());
+        $categoryFinancial = FinancialCategory::create($request->validated());
 
         toast('Categoria financeira cadastrada com sucesso!', 'success');
 
-        return to_route('categoryFinancial.show', $financialCategory);
+        return to_route('categoryFinancial.show', $categoryFinancial);
     }
 
-    public function show(FinancialCategory $financialCategory): View
+    public function show(FinancialCategory $categoryFinancial): View
     {
-        return view('categoryFinancial.show', ['financialCategory' => $financialCategory]);
+        return view('categoryFinancial.show', ['financialCategory' => $categoryFinancial]);
     }
 
-    public function edit(FinancialCategory $financialCategory): View
+    public function edit(FinancialCategory $categoryFinancial): View
     {
-        return view('categoryFinancial.edit', ['financialCategory' => $financialCategory]);
+        return view('categoryFinancial.edit', ['financialCategory' => $categoryFinancial]);
     }
 
-    public function update(FinancialCategoryRequest $request, FinancialCategory $financialCategory): RedirectResponse
+    public function update(FinancialCategoryRequest $request, FinancialCategory $categoryFinancial): RedirectResponse
     {
-        $financialCategory->update($request->validated());
+        $categoryFinancial->update($request->validated());
 
         toast('Categoria financeira atualizada com sucesso!', 'success');
 
-        return to_route('categoryFinancial.show', $financialCategory);
+        return to_route('categoryFinancial.show', $categoryFinancial);
     }
 
-    public function activate(FinancialCategory $financialCategory): RedirectResponse
+    public function activate(FinancialCategory $categoryFinancial): RedirectResponse
     {
-        $financialCategory->update(['active' => true]);
+        $categoryFinancial->update(['active' => true]);
 
         toast('Categoria financeira ativada com sucesso!', 'success');
 
         return to_route('categoryFinancial.index');
     }
 
-    public function deactivate(FinancialCategory $financialCategory): RedirectResponse
+    public function deactivate(FinancialCategory $categoryFinancial): RedirectResponse
     {
-        $financialCategory->update(['active' => false]);
+        $categoryFinancial->update(['active' => false]);
 
         toast('Categoria financeira desativada com sucesso!', 'success');
 
