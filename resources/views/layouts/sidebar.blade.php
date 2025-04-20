@@ -43,13 +43,34 @@
                     </a>
                 </li>
 
+
                 <li class="nav-item">
-                    <a href="{{route('transactions.index')}}" class="nav-link {{Route::is('transaction.*') ? 'active' : ''}}">
-                        <i class="nav-icon fas fa-money-bill-wave"></i>
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Financeiro
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('transaction.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-money-bill-wave"></i>
+                                <p>
+                                    Transações
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{route('categoryFinancial.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Categorias
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item">
