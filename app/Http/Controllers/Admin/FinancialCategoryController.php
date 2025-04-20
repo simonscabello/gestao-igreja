@@ -31,6 +31,11 @@ class FinancialCategoryController extends Controller
         return to_route('categoryFinancial.show', $financialCategory);
     }
 
+    public function show(FinancialCategory $financialCategory): View
+    {
+        return view('categoryFinancial.show', ['financialCategory' => $financialCategory]);
+    }
+
     public function edit(FinancialCategory $financialCategory): View
     {
         return view('categoryFinancial.edit', ['financialCategory' => $financialCategory]);
