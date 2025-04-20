@@ -33,6 +33,7 @@ class FinancialCategoryController extends Controller
 
     public function show(FinancialCategory $financialCategory): View
     {
+        dd($financialCategory);
         return view('categoryFinancial.show', ['financialCategory' => $financialCategory]);
     }
 

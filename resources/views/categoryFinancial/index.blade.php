@@ -58,7 +58,13 @@
                         <tr>
                             <td> {{ $category->name }} </td>
                             <td> {{ $category->description }} </td>
-                            <td> {{ $category->active }}</td>
+                            <td>
+                                @if ($category->active)
+                                    <span class="badge badge-success">Ativo</span>
+                                @else
+                                    <span class="badge badge-danger">Inativo</span>
+                                @endif
+                            </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Ações">
                                     <a href="{{ route('categoryFinancial.edit', $category) }}" class="btn btn-primary btn-sm mr-1" role="button">

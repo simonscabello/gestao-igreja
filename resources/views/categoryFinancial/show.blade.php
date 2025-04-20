@@ -8,7 +8,7 @@
                 <div class="row mb-2">
 
                     <div class="col-sm-6">
-                        <h1>Adicionar Categoria</h1>
+                        <h1>Visualizar Categoria</h1>
                     </div>
 
                     <div class="col-sm-6">
@@ -31,7 +31,7 @@
 
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Visualizar categoria:: {{}}</h3>
+                                <h3 class="card-title">Visualizar categoria:: {{ $financialCategory->name }}</h3>
                             </div>
 
                             
@@ -42,7 +42,6 @@
                                         <input
                                             type="text"
                                             class="form-control"
-                                            name="name"
                                             value="{{ $financialCategory->name }}"
                                             readonly
                                         >
