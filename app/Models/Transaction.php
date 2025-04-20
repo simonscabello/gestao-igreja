@@ -3,16 +3,23 @@
 namespace App\Models;
 
 use App\Enum\TransactionTypeEnum;
+use App\Observers\TransactionObserver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
+/**
+ * @method static create(mixed $validated)
+ * @property mixed $created_by
+ */
+#[ObservedBy([TransactionObserver::class])]
 class Transaction extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'category_id',
+        'financial_category_id',
         'amount',
         'type',
         'action_date',
@@ -21,13 +28,12 @@ class Transaction extends Model
     ];
 
     protected $casts = [
-        'amount' => 'float',
         'type' => TransactionTypeEnum::class
     ];
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(FinancialCategory::class, 'category_id');
+        return $this->belongsTo(FinancialCategory::class, 'financial_category_id');
     }
 
     public function user(): BelongsTo
