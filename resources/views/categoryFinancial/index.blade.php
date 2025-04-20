@@ -56,15 +56,15 @@
                   <tbody>
                     @foreach ($financialCategories as $category)
                         <tr>
-                            <td> {{ $financialCategories->name }} </td>
-                            <td> {{ $financialCategories->description }} </td>
-                            <td> {{ $financialCategories->active }}</td>
+                            <td> {{ $category->name }} </td>
+                            <td> {{ $category->description }} </td>
+                            <td> {{ $category->active }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Ações">
-                                    <a href="{{ route('financialCategories.edit', $financialCategories) }}" class="btn btn-primary btn-sm mr-1" role="button">
+                                    <a href="{{ route('categoryFinancial.edit', $category) }}" class="btn btn-primary btn-sm mr-1" role="button">
                                         <i class="fas fa-pen"></i> Editar
                                     </a>
-                                    <a href="{{ route('financialCategories.show', $financialCategories) }}" class="btn btn-info btn-sm" role="button">
+                                    <a href="{{ route('categoryFinancial.show', $category) }}" class="btn btn-info btn-sm" role="button">
                                         <i class="fas fa-eye"></i> Visualizar
                                     </a>
                                 </div>
