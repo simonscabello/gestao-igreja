@@ -23,7 +23,7 @@ it('exibe o formulário de edição com dados preenchidos', function () {
     $response->assertOk();
     $response->assertSee('Editar Categoria: ' . $category->name);
     $response->assertSee('value="' . $category->name . '"', false);
-//    $response->assertSee('Texto descritivo');
+    $response->assertSee('Texto descritivo');
     $response->assertSee('action="' . route('categoryFinancial.update', $category) . '"', false);
     $response->assertSee('method="POST"', false); // Laravel usa spoof method para PUT
 });

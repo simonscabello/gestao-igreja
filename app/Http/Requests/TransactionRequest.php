@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Validation\Rule;
 use App\Enum\TransactionTypeEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class TransactionRequest extends FormRequest
 {
@@ -18,7 +19,7 @@ class TransactionRequest extends FormRequest
         return [
             'description' => ['required', 'string', 'max:255'],
             'amount' => ['required', 'numeric', 'min:0'],
-            'date' => ['required', 'date'],
+            'action_date' => ['required', 'date'],
             'financial_category_id' => ['required', 'exists:financial_categories,id'],
             'type' => ['required', Rule::enum(TransactionTypeEnum::class)],
         ];

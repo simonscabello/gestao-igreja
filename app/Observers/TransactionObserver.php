@@ -6,10 +6,13 @@ use App\Models\Transaction;
 
 class TransactionObserver
 {
-    public function created(Transaction $transaction): void
+    public function creating(Transaction $transaction): void
     {
         $transaction->created_by = auth()->user()->id;
+    }
 
-        $transaction->save();
+    public function updating(Transaction $transaction): void
+    {
+        $transaction->created_by = auth()->user()->id;
     }
 }

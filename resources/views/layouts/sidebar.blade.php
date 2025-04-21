@@ -35,7 +35,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('member.index')}}" class="nav-link {{Route::is('member.*') ? 'active' : ''}}">
+                    <a href="{{route('member.index')}}" class="nav-link {{ request()->is('member*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Membros
@@ -44,8 +44,8 @@
                 </li>
 
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item has-treeview {{ request()->is('transaction*') || request()->is('categoryFinancial*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('transaction*') || request()->is('categoryFinancial*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Financeiro
@@ -54,7 +54,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('transaction.index')}}" class="nav-link">
+                            <a href="{{route('transaction.index')}}" class="nav-link {{ request()->is('transaction*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-money-bill-wave"></i>
                                 <p>
                                     Transações
@@ -63,7 +63,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{route('categoryFinancial.index')}}" class="nav-link">
+                            <a href="{{route('categoryFinancial.index')}}" class="nav-link {{ request()->is('categoryFinancial*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     Categorias

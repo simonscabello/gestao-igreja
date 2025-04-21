@@ -22,6 +22,6 @@ it('exibe todos os detalhes da categoria financeira', function () {
 
     $response->assertOk();
     $response->assertSeeText('Missões');
-//    $response->assertSeeText('Categoria para ofertas missionárias');
+    $response->assertSeeText('Categoria para ofertas missionárias');
     $response->assertSeeText('Ativo');
 });

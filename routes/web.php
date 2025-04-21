@@ -44,14 +44,8 @@ Route::middleware('auth')->group(function () {
         ->name('dashboard');
 
     Route::resource('member', MemberController::class);
-
     Route::resource('categoryFinancial', FinancialCategoryController::class)
         ->except(['destroy']);
-    Route::patch('/categoryFinancial/{categoryFinancial}/activate', [FinancialCategoryController::class, 'activate'])
-        ->name('categoryFinancial.activate');
-    Route::patch('/categoryFinancial/{categoryFinancial}/deactivate', [FinancialCategoryController::class, 'deactivate'])
-        ->name('categoryFinancial.deactivate');
-
     Route::resource('transaction', TransactionController::class)
         ->except(['destroy']);
 });

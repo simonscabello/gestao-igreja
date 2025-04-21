@@ -28,7 +28,8 @@ class Transaction extends Model
     ];
 
     protected $casts = [
-        'type' => TransactionTypeEnum::class
+        'type' => TransactionTypeEnum::class,
+        'action_date' => 'datetime',
     ];
 
     public function category(): BelongsTo
@@ -36,7 +37,7 @@ class Transaction extends Model
         return $this->belongsTo(FinancialCategory::class, 'financial_category_id');
     }
 
-    public function user(): BelongsTo
+    public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }

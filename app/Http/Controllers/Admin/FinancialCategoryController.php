@@ -49,22 +49,4 @@ class FinancialCategoryController extends Controller
 
         return to_route('categoryFinancial.show', $categoryFinancial);
     }
-
-    public function activate(FinancialCategory $categoryFinancial): RedirectResponse
-    {
-        $categoryFinancial->update(['active' => true]);
-
-        toast('Categoria financeira ativada com sucesso!', 'success');
-
-        return to_route('categoryFinancial.index');
-    }
-
-    public function deactivate(FinancialCategory $categoryFinancial): RedirectResponse
-    {
-        $categoryFinancial->update(['active' => false]);
-
-        toast('Categoria financeira desativada com sucesso!', 'success');
-
-        return to_route('categoryFinancial.index');
-    }
 }

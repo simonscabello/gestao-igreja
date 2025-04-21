@@ -56,46 +56,35 @@ class Member extends Model
 
     protected function birthDate(): Attribute
     {
-        return Attribute::make(
-            get: fn (?string $value) => $value ?
-                Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') :
-                null
-        );
+        return $this->formattedDateAttribute();
     }
 
     protected function admissionDate(): Attribute
     {
-        return Attribute::make(
-            get: fn (?string $value) => $value ?
-                Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') :
-                null,
-        );
+        return $this->formattedDateAttribute();
     }
 
     protected function dismissedDate(): Attribute
     {
-        return Attribute::make(
-            get: fn (?string $value) => $value ?
-                Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') :
-                null
-        );
+        return $this->formattedDateAttribute();
     }
 
     protected function baptismDate(): Attribute
     {
-        return Attribute::make(
-            get: fn (?string $value) => $value ?
-                Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') :
-                null,
-        );
+        return $this->formattedDateAttribute();
     }
 
     protected function weddingDate(): Attribute
     {
+        return $this->formattedDateAttribute();
+    }
+
+    private function formattedDateAttribute(): Attribute
+    {
         return Attribute::make(
-            get: fn (?string $value) => $value ?
-                Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') :
-                null,
+            get: fn(?string $value) => $value
+                ? Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y')
+                : null
         );
     }
 }

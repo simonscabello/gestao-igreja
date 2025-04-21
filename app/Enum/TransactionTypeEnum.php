@@ -12,8 +12,8 @@ enum TransactionTypeEnum: string
     public function label(): string
     {
         return match ($this->value) {
-            self::INCOME->value => 'Income',
-            self::EXPENSE->value => 'Expense',
+            self::INCOME->value => 'Entrada',
+            self::EXPENSE->value => 'Saída',
             default => 'Unknown',
         };
     }

@@ -21,7 +21,5 @@ it('exibe a lista com categorias ativas e inativas, ordenadas por nome', functio
     $response->assertSeeInOrder(['A - Primeira', 'Z - Última']);
     $response->assertSeeText('Z - Última');
     $response->assertSeeText('A - Primeira');
-//    $response->assertSeeText('Desativar');
-//    $response->assertSeeText('Ativar');
     $response->assertSee(route('categoryFinancial.edit', $c1));
 });

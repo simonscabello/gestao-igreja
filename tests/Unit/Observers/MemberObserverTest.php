@@ -7,16 +7,16 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-it('seta dismissed_date e deleted_by no observer', function () {
+it('preenche dismissed_date e deleted_by automaticamente no deleting', function () {
     $user = User::factory()->create();
-    $this->be($user);
+    $this->actingAs($user);
 
     $member = Member::factory()->create();
 
-    // Aciona diretamente o observer
-    $observer = new MemberObserver();
-    $observer->deleted($member);
+    $member->delete();
 
-    expect($member->dismissed_date)->not->toBeNull()
-        ->and($member->deleted_by)->toBe($user->id);
+    $deleted = Member::withTrashed()->find($member->id);
+
+    expect($deleted->dismissed_date)->not->toBeNull()
+        ->and($deleted->deleted_by)->toBe($user->id);
 });

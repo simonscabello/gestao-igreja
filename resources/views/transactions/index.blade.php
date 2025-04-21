@@ -36,7 +36,7 @@
                 </h3>
 
                 <div class="card-tools">
-                    <a href="{{ route('member.create')}}" class="btn btn-inline-block btn-primary btn-sm">
+                    <a href="{{ route('transaction.create')}}" class="btn btn-inline-block btn-primary btn-sm">
                         <i class="fas fa-plus mr-1"></i> Adicionar</a>
                 </div>
 
@@ -56,9 +56,9 @@
                   <tbody>
                     @foreach ($transactions as $transaction)
                         <tr>
-                            <td> {{ $transaction->amount }} </td>
+                            <td> R${{ $transaction->amount }} </td>
                             <td> {{ $transaction->category->name }} </td>
-                            <td> {{ $transaction->created_by}} </td>
+                            <td> {{ $transaction->createdBy->name }} </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Ações">
                                     <a href="{{ route('transaction.edit', $transaction) }}" class="btn btn-primary btn-sm mr-1" role="button">

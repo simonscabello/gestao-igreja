@@ -2,15 +2,13 @@
 @section('content')
 
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
+        <!-- Content Header -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-
                     <div class="col-sm-6">
                         <h1>Editar Categoria: {{ $financialCategory->name }}</h1>
                     </div>
-
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Início</a></li>
@@ -18,12 +16,11 @@
                             <li class="breadcrumb-item active">Editar</li>
                         </ol>
                     </div>
-
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
 
-        <!-- Main content -->
+        <!-- Main Content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -34,70 +31,68 @@
                                 <h3 class="card-title">Editar categoria</h3>
                             </div>
 
-                            <form action="{{route('categoryFinancial.update', $financialCategory)}}" method="POST">
-                                @method('PUT')
+                            <form action="{{ route('categoryFinancial.update', $financialCategory) }}" method="POST">
                                 @csrf
-                                <div class="card-body">
+                                @method('PUT')
 
-                                    <div class="form-group">
+                                <div class="card-body">
+                                    <div class="form-group" style="max-width: 500px;">
                                         <label for="name">Nome*</label>
                                         <input
                                             type="text"
-                                            class="form-control @error('name') is-invalid @enderror"
+                                            id="name"
                                             name="name"
-                                            placeholder="Insira o nome"
+                                            class="form-control @error('name') is-invalid @enderror"
                                             value="{{ $financialCategory->name }}"
                                             readonly
                                         >
                                         @error('name')
-                                        <span class="error invalid-feedback"> {{ $message }} </span>
+                                        <span class="invalid-feedback d-block">{{ $message }}</span>
                                         @enderror
                                     </div>
 
-
-                                    <div class="form-group">
-                                        <label for="name">Descrição</label>
+                                    <div class="form-group" style="max-width: 500px;">
+                                        <label for="description">Descrição</label>
                                         <input
                                             type="text"
-                                            class="form-control @error('name') is-invalid @enderror"
+                                            id="description"
                                             name="description"
+                                            class="form-control @error('description') is-invalid @enderror"
+                                            value="{{ old('description') ?? $financialCategory->description }}"
                                             placeholder="Insira a descrição"
-                                            value="{{ old('description') }}"
                                         >
                                         @error('description')
-                                        <span class="error invalid-feedback"> {{ $message }} </span>
+                                        <span class="invalid-feedback d-block">{{ $message }}</span>
                                         @enderror
                                     </div>
 
-
-                                    <div class="form-group">
-                                        <label>Ativo*</label>
-
+                                    <div class="form-group" style="max-width: 300px;">
+                                        <label for="active">Ativo*</label>
                                         <select
-                                            class="form-control select2 @error('active') is-invalid @enderror "
-                                            name="active">
-                                                <option value="1" selected>Sim</option>
-                                                <option value="0">Não</option>
-                                            
+                                            id="active"
+                                            name="active"
+                                            class="form-control select2 @error('active') is-invalid @enderror">
+                                            <option value="1" {{ $financialCategory->active ? 'selected' : '' }}>Sim</option>
+                                            <option value="0" {{ !$financialCategory->active ? 'selected' : '' }}>Não</option>
                                         </select>
                                         @error('active')
-                                        <span class="error invalid-feedback"> {{ $message }} </span>
+                                        <span class="invalid-feedback d-block">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
-
-                            </div>
 
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Atualizar</button>
                                 </div>
                             </form>
                         </div>
+
                     </div>
                 </div>
             </div>
         </section>
     </div>
+
 
 @endsection
 

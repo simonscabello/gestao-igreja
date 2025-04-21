@@ -38,7 +38,7 @@ class TransactionController extends Controller
 
         toast('Transação criada com sucesso!', 'success');
 
-        return to_route('transactions.show', $transaction);
+        return to_route('transaction.show', $transaction);
     }
 
     public function show(Transaction $transaction): View
@@ -68,6 +68,6 @@ class TransactionController extends Controller
 
         toast('Transação atualizada com sucesso!', 'success');
 
-        return to_route('transactions.index');
+        return to_route('transaction.index');
     }
 }
