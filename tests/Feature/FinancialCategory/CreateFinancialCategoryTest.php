@@ -91,3 +91,18 @@ it('permite criar sem descrição', function () {
     expect(FinancialCategory::count())->toBe(1)
         ->and(FinancialCategory::first()->description)->toBeNull();
 });
+
+it('valida que o nome deve ser único', function () {
+    FinancialCategory::factory()->create(['name' => 'Oferta']);
+
+    $data = [
+        'name' => 'Oferta',
+        'description' => 'Nome duplicado',
+        'active' => true,
+    ];
+
+    $response = $this->post(route('categoryFinancial.store'), $data);
+
+    $response->assertSessionHasErrors(['name']);
+    expect(FinancialCategory::count())->toBe(1);
+});

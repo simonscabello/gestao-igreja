@@ -14,7 +14,7 @@ class FinancialCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'unique:financial_categories,name'],
             'description' => ['nullable', 'string', 'max:255'],
             'active' => ['required', 'boolean'],
         ];

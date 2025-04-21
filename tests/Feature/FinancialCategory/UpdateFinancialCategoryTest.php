@@ -91,3 +91,27 @@ it('permite atualizar sem descrição', function () {
     expect($category->description)->toBeNull();
 });
 
+it('valida que o campo name deve ser único na atualização', function () {
+    $category1 = FinancialCategory::create([
+        'name' => 'Oferta',
+        'description' => 'Desc',
+        'active' => true,
+    ]);
+
+    $category2 = FinancialCategory::create([
+        'name' => 'Campanha',
+        'description' => 'Desc',
+        'active' => true,
+    ]);
+
+    $data = [
+        'name' => $category2->name,
+        'description' => 'Desc',
+        'active' => true,
+    ];
+
+    $response = $this->put(route('categoryFinancial.update', $category1), $data);
+
+    $response->assertSessionHasErrors(['name']);
+});
+

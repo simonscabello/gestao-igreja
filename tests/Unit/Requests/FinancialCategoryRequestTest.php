@@ -39,3 +39,29 @@ it('falha se active não for boolean', function () {
     expect($validator->fails())->toBeTrue()
         ->and($validator->errors()->has('active'))->toBeTrue();
 });
+
+it('falha se descrição for muito longa', function () {
+    $longDescription = str_repeat('a', 256); // 256 caracteres
+    $validator = validateCategory([
+        'name' => 'Ofertas',
+        'description' => $longDescription,
+        'active' => true,
+    ]);
+
+    expect($validator->fails())->toBeTrue()
+        ->and($validator->errors()->has('description'))->toBeTrue();
+});
+
+it('falha se nome já existir', function () {
+    // Simulando que o nome "Ofertas" já existe no banco de dados
+    $existingCategory = \App\Models\FinancialCategory::factory()->create(['name' => 'Ofertas']);
+
+    $validator = validateCategory([
+        'name' => 'Ofertas',
+        'description' => 'Outra descrição',
+        'active' => true,
+    ]);
+
+    expect($validator->fails())->toBeTrue()
+        ->and($validator->errors()->has('name'))->toBeTrue();
+});
