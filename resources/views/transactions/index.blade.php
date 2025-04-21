@@ -48,6 +48,7 @@
                   <thead>
                   <tr>
                     <th>Valor</th>
+                    <th>Data</th>
                     <th>Categoria</th>
                     <th>Cadastrado por</th>
                     <th>Ações</th>
@@ -57,6 +58,7 @@
                     @foreach ($transactions as $transaction)
                         <tr>
                             <td> R${{ $transaction->amount }} </td>
+                            <td> {{ $transaction->action_date->format('d/m/Y') }} </td>
                             <td> {{ $transaction->category->name }} </td>
                             <td> {{ $transaction->createdBy->name }} </td>
                             <td>
